@@ -90,10 +90,13 @@ export default function Home() {
         width="100vw"
         display={"flex"}
         justifyContent={"center"}
-        flexDirection={"column"}
+        flexDirection={"row"}
         alignItems={"center"}
         gap={2}
+        flexWrap={"wrap"}
       >
+        <OutOfStock />
+        <OutOfStock />
         <OutOfStock />
         <Modal
           open={open}

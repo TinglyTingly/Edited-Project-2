@@ -10,6 +10,8 @@ import {
   Modal,
   QuantityInput,
 } from "@mui/material";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { firestore } from "@/firebase";
 import {
   collection,
@@ -132,7 +134,7 @@ const OutOfStock = () => {
             direction={"row"}
             justifyContent="space-between"
             alignItems="center"
-            spacing={10}
+            p={2}
           >
             <Typography variant={"h2"} color={"#333"} textAlign={"center"}>
               Out of Stock
@@ -142,7 +144,7 @@ const OutOfStock = () => {
             </Button>
           </Stack>
         </Box>
-        <Stack spacing={2} overflow={"auto"}>
+        <Stack overflow={"auto"}>
           {OutOfStock.map(({ name, quantity }) => (
             <Box
               key={name}
@@ -151,19 +153,23 @@ const OutOfStock = () => {
               justifyContent={"space-between"}
               alignItems={"center"}
               bgcolor={"#f0f0f0"}
-              paddingX={5}
+              paddingX={10}
+              border={"1px solid red"}
+              pt={2}
+              pb={2}
             >
               <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
               </Typography>
-              <Button variant="contained" onClick={() => addItemOOS(name)}>
-                Add
+
+              <Button variant="contained" onClick={() => removeItemOOS(name)}>
+                <ArrowDownwardIcon />
               </Button>
               <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
-                Quantity: {quantity}
+                {quantity}
               </Typography>
-              <Button variant="contained" onClick={() => removeItemOOS(name)}>
-                Remove
+              <Button variant="contained" onClick={() => addItemOOS(name)}>
+                <ArrowUpwardIcon />
               </Button>
             </Box>
           ))}
