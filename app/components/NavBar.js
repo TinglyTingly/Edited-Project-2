@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Suspense } from "react";
 import { styled, alpha } from "@mui/material/styles";
@@ -53,20 +51,37 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  function SearchComponent() {
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const { replace } = useRouter();
 
-  const handleSearch = function handleSearch(term) {
-    console.log(term);
-    const params = new URLSearchParams(searchParams);
-    if (term) {
-      params.set("query", term);
-    } else {
-      params.delete("query");
-    }
-    replace(`${pathname}?${params.toString()}`);
-  };
+    const handleSearch = function handleSearch(term) {
+      console.log(term);
+      const params = new URLSearchParams(searchParams);
+      if (term) {
+        params.set("query", term);
+      } else {
+        params.delete("query");
+      }
+      replace(`${pathname}?${params.toString()}`);
+    };
+
+    return (
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder="Search Items"
+          inputProps={{ "aria-label": "search" }}
+          onChange={(e) => {
+            handleSearch(e.target.value);
+          }}
+        />
+      </Search>
+    );
+  }
 
   return (
     <Suspense>
@@ -81,19 +96,7 @@ export default function NavBar() {
             >
               Pantry Tracker
             </Typography>
-
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search Items"
-                inputProps={{ "aria-label": "search" }}
-                onChange={(e) => {
-                  handleSearch(e.target.value);
-                }}
-              />
-            </Search>
+            <SearchComponent />
           </Toolbar>
         </AppBar>
       </Box>
