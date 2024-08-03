@@ -176,7 +176,7 @@ const OutOfStock = () => {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
-              border={"1px solid white"}
+              border={"1px solid black"}
             >
               <Typography variant={"h3"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
