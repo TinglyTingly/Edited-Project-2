@@ -30,7 +30,7 @@ const style = {
   width: 400,
   bgcolor: "white",
   color: "black",
-  border: "2px solid #)))",
+  border: "2px solid black",
   boxShadow: 24,
   p: 4,
   display: "flex",
@@ -104,7 +104,9 @@ const OutOfStock = () => {
           </Typography>
           <Stack width="100%" direction={"row"} spacing={2}>
             <TextField
-              sx={{}}
+              sx={{
+                color: "black",
+              }}
               id="outlined-basic"
               label="Item"
               variant="outlined"
@@ -113,6 +115,10 @@ const OutOfStock = () => {
               onChange={(e) => setItemNameOOS(e.target.value)}
             />
             <Button
+              sx={{
+                bgcolor: "black",
+                color: "white",
+              }}
               variant="outlined"
               onClick={() => {
                 addItemOOS(itemNameOOS);
