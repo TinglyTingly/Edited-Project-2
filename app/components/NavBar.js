@@ -68,7 +68,6 @@ export default function NavBar() {
 
   return (
     <>
-      // You could have a loading skeleton as the `fallback` too
       <Suspense>
         <Search />
       </Suspense>
