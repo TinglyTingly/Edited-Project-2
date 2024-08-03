@@ -1,4 +1,3 @@
-This is the original project, before any edits.
+# Project 2 - Edited
 
-Code from this article:
-https://medium.com/@billzhangsc/building-an-inventory-management-app-with-next-js-react-and-firebase-e9647a61eb82
+This is my take on the pantry tracker app
