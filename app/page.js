@@ -8,7 +8,10 @@ import {
   Button,
   Modal,
   TextField,
+  CssBaseline,
 } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
 import { firestore } from "@/firebase";
 import {
   collection,
@@ -84,7 +87,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <NavBar />
       <Box
         width="100vw"
@@ -133,7 +137,7 @@ export default function Home() {
         <Button variant="contained" onClick={handleOpen}>
           Add New Item
         </Button>
-        <Box border={"1px solid #333"}>
+        <Box>
           <Box
             width="800px"
             height="100px"
@@ -142,7 +146,7 @@ export default function Home() {
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <Typography variant={"h2"} color={"#333"} textAlign={"center"}>
+            <Typography variant={"h2"} textAlign={"center"}>
               Working
             </Typography>
           </Box>
@@ -158,10 +162,10 @@ export default function Home() {
                 bgcolor={"#f0f0f0"}
                 paddingX={5}
               >
-                <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
+                <Typography variant={"h3"} textAlign={"center"}>
                   {name.charAt(0).toUpperCase() + name.slice(1)}
                 </Typography>
-                <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
+                <Typography variant={"h3"} textAlign={"center"}>
                   Quantity: {quantity}
                 </Typography>
                 <Button variant="contained" onClick={() => removeItem(name)}>
@@ -172,6 +176,6 @@ export default function Home() {
           </Stack>
         </Box>
       </Box>
-    </>
+    </ThemeProvider>
   );
 }

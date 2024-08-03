@@ -121,11 +121,9 @@ const OutOfStock = () => {
         </Box>
       </Modal>
 
-      <Box border={"1px solid #333"}>
+      <Box>
         <Box
-          width="100%"
-          // height="100px"
-          bgcolor={"#ADD8E6"}
+          border={"1px white solid"}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
@@ -134,13 +132,20 @@ const OutOfStock = () => {
             direction={"row"}
             justifyContent="space-between"
             alignItems="center"
-            p={2}
           >
-            <Typography variant={"h2"} color={"#333"} textAlign={"center"}>
+            <Typography variant={"h2"} textAlign={"center"}>
               Out of Stock
             </Typography>
-            <Button variant="contained" onClick={handleOpen}>
-              Add New Item
+            <Button
+              sx={{
+                paddingLeft: 0.7,
+                paddingRight: 0.7,
+                minWidth: 0,
+              }}
+              variant="contained"
+              onClick={handleOpen}
+            >
+              Add Item
             </Button>
           </Stack>
         </Box>
@@ -152,23 +157,36 @@ const OutOfStock = () => {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
-              bgcolor={"#f0f0f0"}
               paddingX={10}
-              border={"1px solid red"}
-              pt={2}
-              pb={2}
+              border={"1px solid white"}
             >
-              <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
+              <Typography variant={"h3"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
               </Typography>
 
-              <Button variant="contained" onClick={() => removeItemOOS(name)}>
+              <Button
+                size={"small"}
+                variant="contained"
+                onClick={() => removeItemOOS(name)}
+                sx={{
+                  padding: 0.25,
+                  minWidth: 0,
+                }}
+              >
                 <ArrowDownwardIcon />
               </Button>
-              <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
+              <Typography variant={"h3"} textAlign={"center"}>
                 {quantity}
               </Typography>
-              <Button variant="contained" onClick={() => addItemOOS(name)}>
+              <Button
+                size={"small"}
+                variant="contained"
+                onClick={() => addItemOOS(name)}
+                sx={{
+                  padding: 0.25,
+                  minWidth: 0,
+                }}
+              >
                 <ArrowUpwardIcon />
               </Button>
             </Box>
