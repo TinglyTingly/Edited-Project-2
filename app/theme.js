@@ -36,6 +36,9 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiInputInput: {
+      border: "1px solid white",
+    },
     MuiIconButton: {
       defaultProps: {
         size: "small",
@@ -81,6 +84,15 @@ const theme = createTheme({
   },
   shape: {
     borderRadius: 0,
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 800,
+      md: 1190,
+      lg: 1280,
+      xl: 1920,
+    },
   },
 });
 

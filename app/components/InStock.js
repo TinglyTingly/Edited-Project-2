@@ -8,6 +8,7 @@ import {
   Button,
   TextField,
   Modal,
+  useTheme,
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -34,10 +35,6 @@ const style = {
   display: "flex",
   flexDirection: "column",
   gap: 3,
-};
-
-const styleBoards = {
-  width: "30%",
 };
 
 const InStock = () => {
@@ -88,6 +85,9 @@ const InStock = () => {
   useEffect(() => {
     updateInStock();
   }, []);
+
+  const theme = useTheme();
+
   return (
     <>
       <Modal
@@ -123,7 +123,17 @@ const InStock = () => {
         </Box>
       </Modal>
 
-      <Box style={styleBoards}>
+      <Box
+        sx={(theme) => ({
+          width: "30%",
+          [theme.breakpoints.down("md")]: {
+            width: "40%",
+          },
+          [theme.breakpoints.down("sm")]: {
+            width: "80%",
+          },
+        })}
+      >
         <Box
           border={"1px white solid"}
           justifyContent={"space-between"}

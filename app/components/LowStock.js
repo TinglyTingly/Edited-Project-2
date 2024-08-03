@@ -38,7 +38,11 @@ const style = {
 };
 
 const styleBoards = {
-  width: "30%",
+  width: {
+    sm: "100%",
+    md: "50%",
+    lg: "30%",
+  },
 };
 
 const LowStock = () => {
@@ -124,7 +128,17 @@ const LowStock = () => {
         </Box>
       </Modal>
 
-      <Box style={styleBoards}>
+      <Box
+        sx={(theme) => ({
+          width: "30%",
+          [theme.breakpoints.down("md")]: {
+            width: "40%",
+          },
+          [theme.breakpoints.down("sm")]: {
+            width: "80%",
+          },
+        })}
+      >
         <Box
           border={"1px white solid"}
           justifyContent={"space-between"}

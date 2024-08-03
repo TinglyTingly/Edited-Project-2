@@ -29,16 +29,13 @@ const style = {
   transform: "translate(-50%, -50%)",
   // width: 400,
   border: "2px solid white",
-  color: "white",
   boxShadow: 24,
   p: 4,
   display: "flex",
   flexDirection: "column",
   gap: 3,
-};
-
-const styleBoards = {
-  width: "30%",
+  backgroundColor: "#000000",
+  color: "#FFFFFF",
 };
 
 const OutOfStock = () => {
@@ -89,6 +86,7 @@ const OutOfStock = () => {
   useEffect(() => {
     updateOutOfStock();
   }, []);
+
   return (
     <>
       <Modal
@@ -103,12 +101,12 @@ const OutOfStock = () => {
           </Typography>
           <Stack width="100%" direction={"row"} spacing={2}>
             <TextField
-              id="outlined-basic"
               label="Item"
               variant="outlined"
               fullWidth
               value={itemNameOOS}
               onChange={(e) => setItemNameOOS(e.target.value)}
+              color="primary"
             />
             <Button
               variant="outlined"
@@ -124,7 +122,17 @@ const OutOfStock = () => {
         </Box>
       </Modal>
 
-      <Box style={styleBoards}>
+      <Box
+        sx={(theme) => ({
+          width: "30%",
+          [theme.breakpoints.down("md")]: {
+            width: "40%",
+          },
+          [theme.breakpoints.down("sm")]: {
+            width: "80%",
+          },
+        })}
+      >
         <Box
           border={"1px white solid"}
           justifyContent={"space-between"}
@@ -145,7 +153,6 @@ const OutOfStock = () => {
               sx={{
                 paddingLeft: 0.7,
                 paddingRight: 0.7,
-                minWidth: 0,
                 marginRight: 2,
               }}
               variant="contained"
