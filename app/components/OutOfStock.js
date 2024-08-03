@@ -30,7 +30,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "white",
-  border: "2px solid #000",
+  color: "black",
+  border: "2px solid #)))",
   boxShadow: 24,
   p: 4,
   display: "flex",
@@ -100,6 +101,7 @@ const OutOfStock = () => {
           </Typography>
           <Stack width="100%" direction={"row"} spacing={2}>
             <TextField
+              sx={{}}
               id="outlined-basic"
               label="Item"
               variant="outlined"
@@ -130,8 +132,8 @@ const OutOfStock = () => {
         >
           <Stack
             direction={"row"}
-            justifyContent="space-between"
-            alignItems="center"
+            justifyContent={"space-between"}
+            alignItems={"center"}
           >
             <Typography variant={"h2"} textAlign={"center"}>
               Out of Stock

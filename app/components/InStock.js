@@ -39,24 +39,24 @@ const style = {
   gap: 3,
 };
 
-const LowStock = () => {
+const InStock = () => {
   // We'll add our component logic here
-  const [lowStock, setLowStock] = useState([]);
+  const [inStock, setInStock] = useState([]);
   const [open, setOpen] = useState(false);
-  const [itemNameLS, setItemNameLS] = useState("");
+  const [itemNameIS, setItemNameIS] = useState("");
 
-  const updateLowStock = async () => {
-    const snapshot = query(collection(firestore, "lowStock"));
+  const updateInStock = async () => {
+    const snapshot = query(collection(firestore, "inStock"));
     const docs = await getDocs(snapshot);
-    const lowStockList = [];
+    const inStockList = [];
     docs.forEach((doc) => {
-      lowStockList.push({ name: doc.id, ...doc.data() });
+      inStockList.push({ name: doc.id, ...doc.data() });
     });
-    setLowStock(lowStockList);
+    setInStock(inStockList);
   };
 
-  const addItemLS = async (itemLS) => {
-    const docRef = doc(collection(firestore, "lowStock"), itemLS);
+  const addItemIS = async (itemIS) => {
+    const docRef = doc(collection(firestore, "inStock"), itemIS);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const { quantity } = docSnap.data();
@@ -64,11 +64,11 @@ const LowStock = () => {
     } else {
       await setDoc(docRef, { quantity: 1 });
     }
-    await updateLowStock();
+    await updateInStock();
   };
 
-  const removeItemLS = async (itemLS) => {
-    const docRef = doc(collection(firestore, "lowStock"), itemLS);
+  const removeItemIS = async (itemIS) => {
+    const docRef = doc(collection(firestore, "inStock"), itemIS);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const { quantity } = docSnap.data();
@@ -78,14 +78,14 @@ const LowStock = () => {
         await setDoc(docRef, { quantity: quantity - 1 });
       }
     }
-    await updateLowStock();
+    await updateInStock();
   };
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    updateLowStock();
+    updateInStock();
   }, []);
   return (
     <>
@@ -106,14 +106,14 @@ const LowStock = () => {
               label="Item"
               variant="outlined"
               fullWidth
-              value={itemNameLS}
-              onChange={(e) => setItemNameLS(e.target.value)}
+              value={itemNameIS}
+              onChange={(e) => setItemNameIS(e.target.value)}
             />
             <Button
               variant="outlined"
               onClick={() => {
-                addItemLS(itemNameLS);
-                setItemNameLS("");
+                addItemIS(itemNameIS);
+                setItemNameIS("");
                 handleClose();
               }}
             >
@@ -136,7 +136,7 @@ const LowStock = () => {
             alignItems={"center"}
           >
             <Typography variant={"h2"} textAlign={"center"}>
-              Low Stock
+              In Stock
             </Typography>
             <Button
               sx={{
@@ -152,7 +152,7 @@ const LowStock = () => {
           </Stack>
         </Box>
         <Stack overflow={"auto"}>
-          {lowStock.map(({ name, quantity }) => (
+          {inStock.map(({ name, quantity }) => (
             <Box
               key={name}
               width="100%"
@@ -169,7 +169,7 @@ const LowStock = () => {
               <Button
                 size={"small"}
                 variant="contained"
-                onClick={() => removeItemLS(name)}
+                onClick={() => removeItemIS(name)}
                 sx={{
                   padding: 0.25,
                   minWidth: 0,
@@ -183,7 +183,7 @@ const LowStock = () => {
               <Button
                 size={"small"}
                 variant="contained"
-                onClick={() => addItemLS(name)}
+                onClick={() => addItemIS(name)}
                 sx={{
                   padding: 0.25,
                   minWidth: 0,
@@ -199,4 +199,4 @@ const LowStock = () => {
   );
 };
 
-export default LowStock;
+export default InStock;
