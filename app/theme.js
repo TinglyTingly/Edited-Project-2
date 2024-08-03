@@ -17,7 +17,7 @@ const theme = createTheme({
     },
     primary: {
       main: "#90caf9",
-      light: "#e3f2fd",
+      light: "#cccccc",
       dark: "#42a5f5",
       contrastText: "rgba(0,0,0,0,87)",
     },
@@ -28,7 +28,7 @@ const theme = createTheme({
       contrastText: "#000",
     },
     background: {
-      default: "#121212",
+      default: "#1a000d", // deep red
     },
     text: {
       primary: "#FFF",
@@ -62,7 +62,8 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Lato, sans-serif",
+    fontFamily: "Poetsen One, sans-serif",
+    color: "#1a000d",
     button: {
       textTransform: "unset",
       fontWeight: 700,
@@ -72,13 +73,16 @@ const theme = createTheme({
       padding: 10,
     },
     h3: {
+      fontFamily: "Bigshot One, serif",
       fontSize: 20,
       padding: 10,
     },
     h5: {
+      fontFamily: "Bigshot One, serif",
       fontWeight: 700,
     },
     h6: {
+      fontFamily: "Bigshot One, serif",
       fontWeight: 700,
     },
   },

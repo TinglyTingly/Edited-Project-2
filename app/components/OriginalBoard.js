@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import {
   Box,
   Stack,
@@ -8,20 +7,7 @@ import {
   Button,
   Modal,
   TextField,
-  CssBaseline,
 } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme";
-import { firestore } from "@/firebase";
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  setDoc,
-  deleteDoc,
-  getDoc,
-} from "firebase/firestore";
 
 const OriginalBoard = () => {
   return (

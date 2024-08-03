@@ -68,7 +68,7 @@ export default function NavBar() {
     };
 
     return (
-      <Search>
+      <Search sx={{ color: "black" }}>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
@@ -92,7 +92,12 @@ export default function NavBar() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", sm: "block" },
+                color: "black",
+                fontFamily: "Poetsen One, sans-serif",
+              }}
             >
               Pantry Tracker
             </Typography>
