@@ -58,13 +58,6 @@ export default function NavBar() {
 
     const handleSearch = function handleSearch(term) {
       console.log(term);
-      const params = new URLSearchParams(searchParams);
-      if (term) {
-        params.set("query", term);
-      } else {
-        params.delete("query");
-      }
-      replace(`${pathname}?${params.toString()}`);
     };
 
     return (
