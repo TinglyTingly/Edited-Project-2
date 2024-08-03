@@ -67,18 +67,19 @@ export default function NavBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }} mb={8}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Pantry Tracker
-          </Typography>
-          <Suspense>
+    <Suspense>
+      <Box sx={{ flexGrow: 1 }} mb={8}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              Pantry Tracker
+            </Typography>
+
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -91,9 +92,9 @@ export default function NavBar() {
                 }}
               />
             </Search>
-          </Suspense>
-        </Toolbar>
-      </AppBar>
-    </Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </Suspense>
   );
 }
