@@ -8,6 +8,7 @@ import {
   Button,
   TextField,
   Modal,
+  QuantityInput,
 } from "@mui/material";
 import { firestore } from "@/firebase";
 import {
@@ -40,6 +41,7 @@ const OutOfStock = () => {
   const [OutOfStock, setOutOfStock] = useState([]);
   const [open, setOpen] = useState(false);
   const [itemNameOOS, setItemNameOOS] = useState("");
+
   const updateOutOfStock = async () => {
     const snapshot = query(collection(firestore, "outOfStock"));
     const docs = await getDocs(snapshot);
@@ -49,6 +51,7 @@ const OutOfStock = () => {
     });
     setOutOfStock(outOfStockList);
   };
+
   const addItemOOS = async (itemOOS) => {
     const docRef = doc(collection(firestore, "outOfStock"), itemOOS);
     const docSnap = await getDoc(docRef);
@@ -74,6 +77,7 @@ const OutOfStock = () => {
     }
     await updateOutOfStock();
   };
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -114,28 +118,35 @@ const OutOfStock = () => {
           </Stack>
         </Box>
       </Modal>
-      <Button variant="contained" onClick={handleOpen}>
-        Add New Item
-      </Button>
+
       <Box border={"1px solid #333"}>
         <Box
-          width="800px"
-          height="100px"
+          width="100%"
+          // height="100px"
           bgcolor={"#ADD8E6"}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <Typography variant={"h2"} color={"#333"} textAlign={"center"}>
-            Out of Stock
-          </Typography>
+          <Stack
+            direction={"row"}
+            justifyContent="space-between"
+            alignItems="center"
+            spacing={10}
+          >
+            <Typography variant={"h2"} color={"#333"} textAlign={"center"}>
+              Out of Stock
+            </Typography>
+            <Button variant="contained" onClick={handleOpen}>
+              Add New Item
+            </Button>
+          </Stack>
         </Box>
-        <Stack width="800px" height="300px" spacing={2} overflow={"auto"}>
+        <Stack spacing={2} overflow={"auto"}>
           {OutOfStock.map(({ name, quantity }) => (
             <Box
               key={name}
               width="100%"
-              minHeight="150px"
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
@@ -145,6 +156,9 @@ const OutOfStock = () => {
               <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
               </Typography>
+              <Button variant="contained" onClick={() => addItemOOS(name)}>
+                Add
+              </Button>
               <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
                 Quantity: {quantity}
               </Typography>
