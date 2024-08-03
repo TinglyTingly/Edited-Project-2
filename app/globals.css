@@ -1,3 +1,7 @@
+.MuiInput-input {
+  border: 1px solid white;
+}
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

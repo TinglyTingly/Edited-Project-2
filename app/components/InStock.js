@@ -8,6 +8,7 @@ import {
   Button,
   TextField,
   Modal,
+  useTheme,
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -28,34 +29,32 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   // width: 400,
-  border: "2px solid white",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   display: "flex",
   flexDirection: "column",
   gap: 3,
-  backgroundColor: "#000000",
-  color: "#FFFFFF",
 };
 
-const OutOfStock = () => {
+const InStock = () => {
   // We'll add our component logic here
-  const [OutOfStock, setOutOfStock] = useState([]);
+  const [inStock, setInStock] = useState([]);
   const [open, setOpen] = useState(false);
-  const [itemNameOOS, setItemNameOOS] = useState("");
+  const [itemNameIS, setItemNameIS] = useState("");
 
-  const updateOutOfStock = async () => {
-    const snapshot = query(collection(firestore, "outOfStock"));
+  const updateInStock = async () => {
+    const snapshot = query(collection(firestore, "inStock"));
     const docs = await getDocs(snapshot);
-    const outOfStockList = [];
+    const inStockList = [];
     docs.forEach((doc) => {
-      outOfStockList.push({ name: doc.id, ...doc.data() });
+      inStockList.push({ name: doc.id, ...doc.data() });
     });
-    setOutOfStock(outOfStockList);
+    setInStock(inStockList);
   };
 
-  const addItemOOS = async (itemOOS) => {
-    const docRef = doc(collection(firestore, "outOfStock"), itemOOS);
+  const addItemIS = async (itemIS) => {
+    const docRef = doc(collection(firestore, "inStock"), itemIS);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const { quantity } = docSnap.data();
@@ -63,11 +62,11 @@ const OutOfStock = () => {
     } else {
       await setDoc(docRef, { quantity: 1 });
     }
-    await updateOutOfStock();
+    await updateInStock();
   };
 
-  const removeItemOOS = async (itemOOS) => {
-    const docRef = doc(collection(firestore, "outOfStock"), itemOOS);
+  const removeItemIS = async (itemIS) => {
+    const docRef = doc(collection(firestore, "inStock"), itemIS);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const { quantity } = docSnap.data();
@@ -77,15 +76,17 @@ const OutOfStock = () => {
         await setDoc(docRef, { quantity: quantity - 1 });
       }
     }
-    await updateOutOfStock();
+    await updateInStock();
   };
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    updateOutOfStock();
+    updateInStock();
   }, []);
+
+  const theme = useTheme();
 
   return (
     <>
@@ -101,18 +102,18 @@ const OutOfStock = () => {
           </Typography>
           <Stack width="100%" direction={"row"} spacing={2}>
             <TextField
+              id="outlined-basic"
               label="Item"
               variant="outlined"
               fullWidth
-              value={itemNameOOS}
-              onChange={(e) => setItemNameOOS(e.target.value)}
-              color="primary"
+              value={itemNameIS}
+              onChange={(e) => setItemNameIS(e.target.value)}
             />
             <Button
               variant="outlined"
               onClick={() => {
-                addItemOOS(itemNameOOS);
-                setItemNameOOS("");
+                addItemIS(itemNameIS);
+                setItemNameIS("");
                 handleClose();
               }}
             >
@@ -147,12 +148,13 @@ const OutOfStock = () => {
             color={"black"}
           >
             <Typography variant={"h2"} textAlign={"center"}>
-              Shopping List
+              In Stock
             </Typography>
             <Button
               sx={{
                 paddingLeft: 0.7,
                 paddingRight: 0.7,
+                minWidth: 0,
                 marginRight: 2,
               }}
               variant="contained"
@@ -163,7 +165,7 @@ const OutOfStock = () => {
           </Stack>
         </Box>
         <Stack overflow={"auto"}>
-          {OutOfStock.map(({ name, quantity }) => (
+          {inStock.map(({ name, quantity }) => (
             <Box
               key={name}
               width="100%"
@@ -179,7 +181,7 @@ const OutOfStock = () => {
                 <Button
                   size={"small"}
                   variant="contained"
-                  onClick={() => removeItemOOS(name)}
+                  onClick={() => removeItemIS(name)}
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
@@ -193,7 +195,7 @@ const OutOfStock = () => {
                 <Button
                   size={"small"}
                   variant="contained"
-                  onClick={() => addItemOOS(name)}
+                  onClick={() => addItemIS(name)}
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
@@ -210,4 +212,4 @@ const OutOfStock = () => {
   );
 };
 
-export default OutOfStock;
+export default InStock;
