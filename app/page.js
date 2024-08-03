@@ -1,19 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
-import { firestore } from "@/firebase";
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  setDoc,
-  deleteDoc,
-  getDoc,
-} from "firebase/firestore";
 import NavBar from "./components/NavBar";
 import OutOfStock from "./components/OutOfStock";
 import LowStock from "./components/LowStock";
@@ -40,9 +29,9 @@ export default function Home() {
       <CssBaseline />
       <NavBar />
       <Box
-        width="100vw"
+        // width="100vw"
         display={"flex"}
-        justifyContent={"center"}
+        justifyContent={"space-around"}
         flexDirection={"row"}
         alignItems={"center"}
         gap={2}

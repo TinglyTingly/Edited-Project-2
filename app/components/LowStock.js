@@ -10,8 +10,8 @@ import {
   Modal,
   QuantityInput,
 } from "@mui/material";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
 import { firestore } from "@/firebase";
 import {
   collection,
@@ -37,6 +37,10 @@ const style = {
   display: "flex",
   flexDirection: "column",
   gap: 3,
+};
+
+const styleBoards = {
+  width: "30%",
 };
 
 const LowStock = () => {
@@ -123,16 +127,18 @@ const LowStock = () => {
         </Box>
       </Modal>
 
-      <Box>
+      <Box sx={styleBoards}>
         <Box
           border={"1px white solid"}
-          display={"flex"}
-          justifyContent={"center"}
+          bgcolor={"white"}
+          color={"black"}
+          justifyContent={"space-around"}
           alignItems={"center"}
         >
           <Stack
+            display={"flex"}
             direction={"row"}
-            justifyContent={"space-between"}
+            justifyContent={"space-around"}
             alignItems={"center"}
           >
             <Typography variant={"h2"} textAlign={"center"}>
@@ -143,6 +149,8 @@ const LowStock = () => {
                 paddingLeft: 0.7,
                 paddingRight: 0.7,
                 minWidth: 0,
+                bgcolor: "black",
+                color: "white",
               }}
               variant="contained"
               onClick={handleOpen}
@@ -165,32 +173,33 @@ const LowStock = () => {
               <Typography variant={"h3"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
               </Typography>
-
-              <Button
-                size={"small"}
-                variant="contained"
-                onClick={() => removeItemLS(name)}
-                sx={{
-                  padding: 0.25,
-                  minWidth: 0,
-                }}
-              >
-                <ArrowDownwardIcon />
-              </Button>
-              <Typography variant={"h3"} textAlign={"center"}>
-                {quantity}
-              </Typography>
-              <Button
-                size={"small"}
-                variant="contained"
-                onClick={() => addItemLS(name)}
-                sx={{
-                  padding: 0.25,
-                  minWidth: 0,
-                }}
-              >
-                <ArrowUpwardIcon />
-              </Button>
+              <Stack direction={"row"} m={2} spacing={1.2}>
+                <Button
+                  size={"small"}
+                  variant="contained"
+                  onClick={() => removeItemLS(name)}
+                  sx={{
+                    padding: 0.25,
+                    minWidth: 0,
+                  }}
+                >
+                  <RemoveIcon />
+                </Button>
+                <Typography variant={"h3"} textAlign={"center"}>
+                  {quantity}
+                </Typography>
+                <Button
+                  size={"small"}
+                  variant="contained"
+                  onClick={() => addItemLS(name)}
+                  sx={{
+                    padding: 0.25,
+                    minWidth: 0,
+                  }}
+                >
+                  <AddIcon />
+                </Button>
+              </Stack>
             </Box>
           ))}
         </Stack>
