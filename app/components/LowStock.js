@@ -152,7 +152,11 @@ const LowStock = () => {
             bgcolor={"white"}
             color={"black"}
           >
-            <Typography variant={"h2"} textAlign={"center"}>
+            <Typography
+              variant={"h2"}
+              textAlign={"center"}
+              sx={{ fontSize: "25px" }}
+            >
               Low Stock
             </Typography>
             <Button

@@ -97,6 +97,7 @@ export default function NavBar() {
                 display: { xs: "none", sm: "block" },
                 color: "black",
                 fontFamily: "Poetsen One, sans-serif",
+                fontSize: "30px",
               }}
             >
               Pantry Tracker

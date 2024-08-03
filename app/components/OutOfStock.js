@@ -146,7 +146,11 @@ const OutOfStock = () => {
             bgcolor={"white"}
             color={"black"}
           >
-            <Typography variant={"h2"} textAlign={"center"}>
+            <Typography
+              variant={"h2"}
+              textAlign={"center"}
+              sx={{ fontSize: "25px" }}
+            >
               Shopping List
             </Typography>
             <Button

@@ -16,7 +16,7 @@ const theme = createTheme({
       white: "#FFF",
     },
     primary: {
-      main: "#90caf9",
+      main: "#00b9fc",
       light: "#cccccc",
       dark: "#42a5f5",
       contrastText: "rgba(0,0,0,0,87)",
@@ -66,7 +66,6 @@ const theme = createTheme({
     color: "#1a000d",
     button: {
       textTransform: "unset",
-      fontWeight: 700,
     },
     h2: {
       fontSize: 30,
@@ -79,11 +78,9 @@ const theme = createTheme({
     },
     h5: {
       fontFamily: "Bigshot One, serif",
-      fontWeight: 700,
     },
     h6: {
       fontFamily: "Bigshot One, serif",
-      fontWeight: 700,
     },
   },
   shape: {
