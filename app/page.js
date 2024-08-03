@@ -18,7 +18,7 @@ export default function Home() {
         display={"flex"}
         justifyContent={"space-around"}
         flexDirection={"row"}
-        alignItems={"center"}
+        alignItems={"flex-start"}
         gap={2}
         flexWrap={"wrap"}
       >
