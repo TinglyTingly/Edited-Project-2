@@ -11,12 +11,28 @@ export const colors = [
 
 const theme = createTheme({
   palette: {
-    mode: "dark",
-    background: {
-      default: "#000000",
+    common: {
+      black: "#000",
+      white: "#FFF",
     },
     primary: {
-      main: "#FFFFFF",
+      main: "#90caf9",
+      light: "#e3f2fd",
+      dark: "#42a5f5",
+      contrastText: "rgba(0,0,0,0,87)",
+    },
+    secondary: {
+      light: "#ff7961",
+      main: "#f44336",
+      dark: "#ba000d",
+      contrastText: "#000",
+    },
+    background: {
+      default: "#121212",
+    },
+    text: {
+      primary: "#FFF",
+      secondary: "#FFF",
     },
   },
   components: {

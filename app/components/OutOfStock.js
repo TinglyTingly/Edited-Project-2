@@ -27,10 +27,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "white",
-  color: "black",
-  border: "2px solid black",
+  // width: 400,
+  border: "2px solid white",
+  color: "white",
   boxShadow: 24,
   p: 4,
   display: "flex",
@@ -104,9 +103,6 @@ const OutOfStock = () => {
           </Typography>
           <Stack width="100%" direction={"row"} spacing={2}>
             <TextField
-              sx={{
-                color: "black",
-              }}
               id="outlined-basic"
               label="Item"
               variant="outlined"
@@ -115,10 +111,6 @@ const OutOfStock = () => {
               onChange={(e) => setItemNameOOS(e.target.value)}
             />
             <Button
-              sx={{
-                bgcolor: "black",
-                color: "white",
-              }}
               variant="outlined"
               onClick={() => {
                 addItemOOS(itemNameOOS);
@@ -132,19 +124,19 @@ const OutOfStock = () => {
         </Box>
       </Modal>
 
-      <Box sx={styleBoards}>
+      <Box style={styleBoards}>
         <Box
           border={"1px white solid"}
-          bgcolor={"white"}
-          color={"black"}
-          justifyContent={"space-around"}
+          justifyContent={"space-between"}
           alignItems={"center"}
         >
           <Stack
             display={"flex"}
             direction={"row"}
-            justifyContent={"space-around"}
+            justifyContent={"space-between"}
             alignItems={"center"}
+            bgcolor={"white"}
+            color={"black"}
           >
             <Typography variant={"h2"} textAlign={"center"}>
               Shopping List
@@ -154,8 +146,7 @@ const OutOfStock = () => {
                 paddingLeft: 0.7,
                 paddingRight: 0.7,
                 minWidth: 0,
-                bgcolor: "black",
-                color: "white",
+                marginRight: 2,
               }}
               variant="contained"
               onClick={handleOpen}
@@ -172,7 +163,6 @@ const OutOfStock = () => {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
-              paddingX={10}
               border={"1px solid white"}
             >
               <Typography variant={"h3"} textAlign={"center"}>

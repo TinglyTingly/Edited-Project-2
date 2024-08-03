@@ -8,7 +8,6 @@ import {
   Button,
   TextField,
   Modal,
-  QuantityInput,
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -28,10 +27,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "white",
-  color: "black",
-  border: "2px solid #)))",
+  // width: 400,
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   display: "flex",
@@ -105,7 +102,6 @@ const InStock = () => {
           </Typography>
           <Stack width="100%" direction={"row"} spacing={2}>
             <TextField
-              sx={{}}
               id="outlined-basic"
               label="Item"
               variant="outlined"
@@ -127,19 +123,19 @@ const InStock = () => {
         </Box>
       </Modal>
 
-      <Box sx={styleBoards}>
+      <Box style={styleBoards}>
         <Box
           border={"1px white solid"}
-          bgcolor={"white"}
-          color={"black"}
-          justifyContent={"space-around"}
+          justifyContent={"space-between"}
           alignItems={"center"}
         >
           <Stack
             display={"flex"}
             direction={"row"}
-            justifyContent={"space-around"}
+            justifyContent={"space-between"}
             alignItems={"center"}
+            bgcolor={"white"}
+            color={"black"}
           >
             <Typography variant={"h2"} textAlign={"center"}>
               In Stock
@@ -149,8 +145,7 @@ const InStock = () => {
                 paddingLeft: 0.7,
                 paddingRight: 0.7,
                 minWidth: 0,
-                bgcolor: "black",
-                color: "white",
+                marginRight: 2,
               }}
               variant="contained"
               onClick={handleOpen}
@@ -167,7 +162,6 @@ const InStock = () => {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
-              paddingX={10}
               border={"1px solid white"}
             >
               <Typography variant={"h3"} textAlign={"center"}>
