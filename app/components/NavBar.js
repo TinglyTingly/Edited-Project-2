@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Suspense } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -68,10 +69,15 @@ export default function NavBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }} mb={8}>
-      <AppBar position="static">
-        <Toolbar>
-          {/* <IconButton
+    <>
+      // You could have a loading skeleton as the `fallback` too
+      <Suspense>
+        <Search />
+      </Suspense>
+      <Box sx={{ flexGrow: 1 }} mb={8}>
+        <AppBar position="static">
+          <Toolbar>
+            {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -80,28 +86,29 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Pantry Tracker
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search Items"
-              inputProps={{ "aria-label": "search" }}
-              onChange={(e) => {
-                handleSearch(e.target.value);
-              }}
-            />
-          </Search>
-        </Toolbar>
-      </AppBar>
-    </Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              Pantry Tracker
+            </Typography>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search Items"
+                inputProps={{ "aria-label": "search" }}
+                onChange={(e) => {
+                  handleSearch(e.target.value);
+                }}
+              />
+            </Search>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </>
   );
 }
