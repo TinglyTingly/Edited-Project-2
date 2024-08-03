@@ -149,8 +149,8 @@ const LowStock = () => {
             direction={"row"}
             justifyContent={"space-between"}
             alignItems={"center"}
-            bgcolor={"white"}
-            color={"black"}
+            bgcolor={"#1a000d"}
+            color={"white"}
           >
             <Typography
               variant={"h2"}
@@ -165,6 +165,8 @@ const LowStock = () => {
                 paddingRight: 0.7,
                 minWidth: 0,
                 marginRight: 2,
+                color: "black",
+                fontSize: "16px",
               }}
               variant="contained"
               onClick={handleOpen}

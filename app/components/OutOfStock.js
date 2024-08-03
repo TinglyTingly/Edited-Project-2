@@ -143,8 +143,8 @@ const OutOfStock = () => {
             direction={"row"}
             justifyContent={"space-between"}
             alignItems={"center"}
-            bgcolor={"white"}
-            color={"black"}
+            bgcolor={"#1a000d"}
+            color={"white"}
           >
             <Typography
               variant={"h2"}
@@ -158,6 +158,8 @@ const OutOfStock = () => {
                 paddingLeft: 0.7,
                 paddingRight: 0.7,
                 marginRight: 2,
+                color: "black",
+                fontSize: "16px",
               }}
               variant="contained"
               onClick={handleOpen}
@@ -201,6 +203,7 @@ const OutOfStock = () => {
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
+                    color: "#FFFFFF",
                   }}
                 >
                   <AddIcon />
