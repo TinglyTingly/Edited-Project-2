@@ -75,18 +75,20 @@ export default function NavBar({ onSearchChange }) {
     };
 
     return (
-      <Search sx={{ color: "black" }}>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search Items"
-          inputProps={{ "aria-label": "search" }}
-          value={searchTerm}
-          onChange={handleSearch}
-          autoFocus
-        />
-      </Search>
+      <Suspense>
+        <Search sx={{ color: "black" }}>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search Items"
+            inputProps={{ "aria-label": "search" }}
+            value={searchTerm}
+            onChange={handleSearch}
+            autoFocus
+          />
+        </Search>
+      </Suspense>
     );
   }
 
