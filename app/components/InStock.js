@@ -35,6 +35,8 @@ const style = {
   display: "flex",
   flexDirection: "column",
   gap: 3,
+  backgroundColor: "#1a000d",
+  color: "#FFFFFF",
 };
 
 const InStock = () => {
