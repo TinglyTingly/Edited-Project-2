@@ -22,7 +22,7 @@ export default function Home() {
         gap={2}
         flexWrap={"wrap"}
       >
-        <OutOfStock />
+        <OutOfStock searchTerm={searchTerm} />
         <LowStock />
         <InStock />
       </Box>
