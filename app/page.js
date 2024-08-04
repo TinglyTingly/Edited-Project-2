@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
@@ -9,6 +9,7 @@ import LowStock from "./components/LowStock";
 import InStock from "./components/InStock";
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
