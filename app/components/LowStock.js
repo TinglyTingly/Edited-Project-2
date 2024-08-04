@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 
 import parse from "html-react-parser";
-
 import { highlightText } from "../utils/textHighLight";
 import {
   Box,
@@ -193,12 +192,11 @@ const LowStock = ({ searchTerm }) => {
             >
               <Typography variant={"h3"} textAlign={"center"}>
                 {parse(
-                  searchTerm
-                    ? highlightText(
-                        name.charAt(0).toUpperCase() + name.slice(1),
-                        searchTerm
-                      )
-                    : name.charAt(0).toUpperCase() + name.slice(1)
+                  highlightText(
+                    name.charAt(0).toUpperCase() + name.slice(1),
+
+                    searchTerm
+                  )
                 )}
               </Typography>
               <Stack direction={"row"} m={2} spacing={1.2}>
