@@ -194,8 +194,7 @@ const LowStock = ({ searchTerm }) => {
                 {parse(
                   highlightText(
                     name.charAt(0).toUpperCase() + name.slice(1),
-
-                    searchTerm
+                    searchTerm || "" // Add a default empty string if searchTerm is undefined
                   )
                 )}
               </Typography>
