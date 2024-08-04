@@ -193,11 +193,12 @@ const LowStock = ({ searchTerm }) => {
             >
               <Typography variant={"h3"} textAlign={"center"}>
                 {parse(
-                  highlightText(
-                    name.charAt(0).toUpperCase() + name.slice(1),
-
-                    searchTerm
-                  )
+                  searchTerm
+                    ? highlightText(
+                        name.charAt(0).toUpperCase() + name.slice(1),
+                        searchTerm
+                      )
+                    : name.charAt(0).toUpperCase() + name.slice(1)
                 )}
               </Typography>
               <Stack direction={"row"} m={2} spacing={1.2}>
