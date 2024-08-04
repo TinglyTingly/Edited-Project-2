@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Suspense } from "react";
+import { useState, Suspense } from "react";
+
+import { debounce } from "lodash";
 
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -51,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function NavBar() {
+export default function NavBar({ onSearchChange }) {
   const [searchTerm, setSearchTerm] = useState("");
   const searchParams = useSearchParams();
   const pathname = usePathname();
