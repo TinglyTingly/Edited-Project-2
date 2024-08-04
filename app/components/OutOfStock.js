@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import HighlightedText from "./HighlightedText";
 
-import { highlightText } from "../utils/textHighlight";
+import { highlightText } from "../utils/textHighLight";
 
 import {
   Box,
@@ -43,7 +43,6 @@ const style = {
 };
 
 const OutOfStock = ({ searchTerm }) => {
-  // We'll add our component logic here
   const [OutOfStock, setOutOfStock] = useState([]);
   const [open, setOpen] = useState(false);
   const [itemNameOOS, setItemNameOOS] = useState("");
