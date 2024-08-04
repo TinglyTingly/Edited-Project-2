@@ -89,7 +89,7 @@ export default function NavBar() {
   }
 
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <Box sx={{ flexGrow: 1 }} mb={8}>
         <AppBar position="static">
           <Toolbar>
