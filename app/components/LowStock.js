@@ -175,7 +175,7 @@ const LowStock = () => {
             </Button>
           </Stack>
         </Box>
-        <Stack overflow={"auto"}>
+        <Stack overflow={"auto"} sx={{ background: "white" }}>
           {lowStock.map(({ name, quantity }) => (
             <Box
               key={name}
@@ -183,7 +183,8 @@ const LowStock = () => {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
-              border={"1px solid white"}
+              border={"1px solid black"}
+              color="black"
             >
               <Typography variant={"h3"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
@@ -196,6 +197,7 @@ const LowStock = () => {
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
+                    color: "black",
                   }}
                 >
                   <RemoveIcon />
@@ -210,6 +212,7 @@ const LowStock = () => {
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
+                    color: "black",
                   }}
                 >
                   <AddIcon />

@@ -170,7 +170,7 @@ const InStock = () => {
             </Button>
           </Stack>
         </Box>
-        <Stack overflow={"auto"}>
+        <Stack overflow={"auto"} sx={{ background: "white" }}>
           {inStock.map(({ name, quantity }) => (
             <Box
               key={name}
@@ -178,7 +178,8 @@ const InStock = () => {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
-              border={"1px solid white"}
+              border={"1px solid black"}
+              color="black"
             >
               <Typography variant={"h3"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
@@ -191,6 +192,7 @@ const InStock = () => {
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
+                    color: "black",
                   }}
                 >
                   <RemoveIcon />
@@ -205,6 +207,7 @@ const InStock = () => {
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
+                    color: "black",
                   }}
                 >
                   <AddIcon />
