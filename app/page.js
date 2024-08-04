@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <NavBar />
+      <NavBar onSearchChange={setSearchTerm} />
       <Box
         // width="100vw"
         display={"flex"}

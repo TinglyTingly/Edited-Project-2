@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Suspense } from "react";
+
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -51,13 +52,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
-  function SearchComponent() {
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
+  const [searchTerm, setSearchTerm] = useState("");
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-    const handleSearch = function handleSearch(term) {
-      console.log(term);
+  function highlightText(text, highlight) {
+    if (!highlight.trim()) {
+      return text;
+    }
+    const regex = new RegExp(`(${highlight})`, "gi");
+    return text.replace(regex, "<mark>$1</mark>");
+  }
+
+  function SearchComponent() {
+    const handleSearch = (e) => {
+      const value = e.target.value;
+      setSearchTerm(value);
+      onSearchChange(value);
     };
 
     return (
@@ -68,9 +80,9 @@ export default function NavBar() {
         <StyledInputBase
           placeholder="Search Items"
           inputProps={{ "aria-label": "search" }}
-          onChange={(e) => {
-            handleSearch(e.target.value);
-          }}
+          value={searchTerm}
+          onChange={handleSearch}
+          autoFocus
         />
       </Search>
     );

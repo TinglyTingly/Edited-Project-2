@@ -1,6 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import HighlightedText from "./HighlightedText";
+
+import { highlightText } from "../utils/textHighlight";
+
 import {
   Box,
   Stack,
@@ -38,7 +42,7 @@ const style = {
   color: "#FFFFFF",
 };
 
-const OutOfStock = () => {
+const OutOfStock = ({ searchTerm }) => {
   // We'll add our component logic here
   const [OutOfStock, setOutOfStock] = useState([]);
   const [open, setOpen] = useState(false);
@@ -178,7 +182,13 @@ const OutOfStock = () => {
               color="black"
             >
               <Typography variant={"h3"} textAlign={"center"}>
-                {name.charAt(0).toUpperCase() + name.slice(1)}
+                {parse(
+                  highlightText(
+                    name.charAt(0).toUpperCase() + name.slice(1),
+
+                    searchTerm
+                  )
+                )}
               </Typography>
               <Stack direction={"row"} m={2} spacing={1.2}>
                 <Button
