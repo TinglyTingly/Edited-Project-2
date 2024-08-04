@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import HighlightedText from "./HighlightedText";
-
+import parse from "html-react-parser";
 import { highlightText } from "../utils/textHighLight";
 
 import {
