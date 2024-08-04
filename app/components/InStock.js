@@ -29,7 +29,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   // width: 400,
-  border: "2px solid #000",
+  border: "2px solid white",
   boxShadow: 24,
   p: 4,
   display: "flex",
