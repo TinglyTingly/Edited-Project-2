@@ -168,7 +168,7 @@ const OutOfStock = () => {
             </Button>
           </Stack>
         </Box>
-        <Stack overflow={"auto"}>
+        <Stack overflow={"auto"} sx={{ background: "white" }}>
           {OutOfStock.map(({ name, quantity }) => (
             <Box
               key={name}
@@ -177,7 +177,7 @@ const OutOfStock = () => {
               justifyContent={"space-between"}
               alignItems={"center"}
               border={"1px solid black"}
-              backgroundColor="white"
+              color="black"
             >
               <Typography variant={"h3"} textAlign={"center"}>
                 {name.charAt(0).toUpperCase() + name.slice(1)}
@@ -190,6 +190,7 @@ const OutOfStock = () => {
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
+                    color: "black",
                   }}
                 >
                   <RemoveIcon />
@@ -204,7 +205,7 @@ const OutOfStock = () => {
                   sx={{
                     padding: 0.25,
                     minWidth: 0,
-                    color: "#FFFFFF",
+                    color: "black",
                   }}
                 >
                   <AddIcon />
