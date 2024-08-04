@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
@@ -11,22 +11,24 @@ import InStock from "./components/InStock";
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <NavBar onSearchChange={setSearchTerm} />
-      <Box
-        // width="100vw"
-        display={"flex"}
-        justifyContent={"space-around"}
-        flexDirection={"row"}
-        alignItems={"flex-start"}
-        gap={2}
-        flexWrap={"wrap"}
-      >
-        <OutOfStock searchTerm={searchTerm} />
-        <LowStock />
-        <InStock />
-      </Box>
-    </ThemeProvider>
+    <Suspense>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar onSearchChange={setSearchTerm} />
+        <Box
+          // width="100vw"
+          display={"flex"}
+          justifyContent={"space-around"}
+          flexDirection={"row"}
+          alignItems={"flex-start"}
+          gap={2}
+          flexWrap={"wrap"}
+        >
+          <OutOfStock searchTerm={searchTerm} />
+          <LowStock />
+          <InStock />
+        </Box>
+      </ThemeProvider>
+    </Suspense>
   );
 }
