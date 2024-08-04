@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Suspense } from "react";
+import { useState, Suspense } from "react";
+import { debounce } from "lodash";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -50,21 +51,25 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function NavBar() {
-  function SearchComponent() {
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
+export default function NavBar({ onSearchChange }) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-    const handleSearch = function handleSearch(term) {
-      console.log(term);
-      const params = new URLSearchParams(searchParams);
-      if (term) {
-        params.set("query", term);
-      } else {
-        params.delete("query");
-      }
-      replace(`${pathname}?${params.toString()}`);
+  function highlightText(text, highlight) {
+    if (!highlight.trim()) {
+      return text;
+    }
+    const regex = new RegExp(`(${highlight})`, "gi");
+    return text.replace(regex, "<mark>$1</mark>");
+  }
+
+  function SearchComponent() {
+    const handleSearch = (e) => {
+      const value = e.target.value;
+      setSearchTerm(value);
+      onSearchChange(value);
     };
 
     return (
@@ -75,9 +80,9 @@ export default function NavBar() {
         <StyledInputBase
           placeholder="Search Items"
           inputProps={{ "aria-label": "search" }}
-          onChange={(e) => {
-            handleSearch(e.target.value);
-          }}
+          value={searchTerm}
+          onChange={handleSearch}
+          autoFocus
         />
       </Search>
     );
@@ -97,6 +102,7 @@ export default function NavBar() {
                 display: { xs: "none", sm: "block" },
                 color: "black",
                 fontFamily: "Poetsen One, sans-serif",
+                fontSize: "30px",
               }}
             >
               Pantry Tracker

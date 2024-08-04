@@ -5,7 +5,6 @@
  */
 const nextConfig = {
   /* config options here */
-
   transpilePackages: ["@mui/material", "@mui/icons-material"],
 };
 

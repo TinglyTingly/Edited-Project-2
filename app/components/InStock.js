@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import parse from "html-react-parser";
+import { highlightText } from "../utils/textHighlight";
 import {
   Box,
   Stack,

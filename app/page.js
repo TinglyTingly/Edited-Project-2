@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
@@ -7,12 +8,16 @@ import NavBar from "./components/NavBar";
 import OutOfStock from "./components/OutOfStock";
 import LowStock from "./components/LowStock";
 import InStock from "./components/InStock";
+import { highlightText } from "./utils/textHighlight";
+
+console.log("App is running");
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <NavBar />
+      <NavBar onSearchChange={setSearchTerm} />
       <Box
         // width="100vw"
         display={"flex"}
@@ -22,7 +27,7 @@ export default function Home() {
         gap={2}
         flexWrap={"wrap"}
       >
-        <OutOfStock />
+        <OutOfStock searchTerm={searchTerm} />
         <LowStock />
         <InStock />
       </Box>
