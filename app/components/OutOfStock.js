@@ -34,7 +34,7 @@ const style = {
   display: "flex",
   flexDirection: "column",
   gap: 3,
-  backgroundColor: "#000000",
+  backgroundColor: "#1a000d",
   color: "#FFFFFF",
 };
 
@@ -143,8 +143,6 @@ const OutOfStock = () => {
             direction={"row"}
             justifyContent={"space-between"}
             alignItems={"center"}
-            bgcolor={"#1a000d"}
-            color={"white"}
           >
             <Typography
               variant={"h2"}
